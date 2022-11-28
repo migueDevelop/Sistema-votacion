@@ -2,10 +2,10 @@ package com.votacion.sistema.services;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -24,16 +24,14 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
 	@Autowired	
 	private UsuarioRepository usuarioRepo;
+	Usuario usuarioActual = new Usuario();
 	
 	public UsuarioServiceImpl(UsuarioRepository usuarioRepo) {
 		super();
 		this.usuarioRepo = usuarioRepo;
 	}
-	
-
 
 	@Override
 	public Usuario guardarUsuario(UsuarioRegistroDTO registroDTO) {
@@ -44,13 +42,17 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioRepo.save(usuario);
 	}
 
-
+	@Override
+	public Usuario getCurrentUsuario() {
+		return usuarioActual;
+	}
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = usuarioRepo.findByDui(username);
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Usuario o password inválidos");
 		}
+		usuarioActual = usuario;
 		return new User(usuario.getDUI(),usuario.getContrasena(),mapearAutoridadesRoles(usuario.getRoles()) );
 	}
 

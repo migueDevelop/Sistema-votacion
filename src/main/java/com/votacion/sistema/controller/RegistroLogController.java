@@ -10,11 +10,4 @@ public class RegistroLogController {
 	public String iniciarSesion() {
 		return "login";
 	}
-	@GetMapping("/")
-	public String verPaginaInicio(Model model) {
-		model.addAttribute("titulo", "Elecciones presidenciales 2022");
-		return "index";
-	}
-
-	
 }

@@ -1,0 +1,3 @@
+El repositorio de usuarion pasa un string y no un integer para el tipo de ID.
+El la JRV tiene un numero correlativo no un nombre
+El servicio de administradores no tiene un Interfaz

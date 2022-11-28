@@ -1,14 +1,9 @@
 package com.votacion.sistema.repositories;
 
+import com.votacion.sistema.models.Papeleta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.votacion.sistema.models.Usuario;
-
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
-
-	public Usuario findByDui(String dui);
-	
-	
+public interface PapeletaRepository extends JpaRepository<Papeleta, Integer> {
 }
