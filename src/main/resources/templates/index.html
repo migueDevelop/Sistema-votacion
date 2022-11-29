@@ -31,18 +31,7 @@
 
 <body>
 
-	<nav>
-		<button>
 
-		
-			
-				
-					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"> Cerrar
-							sesión </a></li>
-				
-
-		</button>
-	</nav>
 
 	<main>
 
@@ -52,8 +41,16 @@
 
 					<div class="col-lg-5 col-12 m-auto">
 						<div class="hero-text">
-							<img src="https://www.tse.gob.sv/imagen/logo/tse.png" width="100"
-								height="50">
+						
+								<li sec:authorize="isAuthenticated()"><a
+								th:href="@{/logout}" class="bn3637 bn36"> <img
+									src="img/logout.png" width="auto" height="50">Cerrar
+									sesion
+							</a></li> 
+						
+							<img src="https://i.ibb.co/xC82Gz1/ts3.png"
+								width="auto" height="130px">
+								
 							<h1 class="text-white mb-4" th:text="${titulo}"></h1>
 
 
