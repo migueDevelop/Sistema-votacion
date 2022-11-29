@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -41,16 +43,17 @@ public class SistemaDapApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//saveDepa();
-		//saveMuni();
-		//saveCentros();
-		//saveJrv();
-		//savePadron();
-		//savePartido();
-		//saveCandidato();
-		//saveTipoCandidato();
-		//savePapeleta();
-		//saveUsuarioPapeleta();
+//		saveUsuarios();
+//		saveDepa();
+//		saveMuni();
+//		saveCentros();
+//		saveJrv();
+//		savePadron();
+//		savePartido();
+//		saveCandidato();
+//		saveTipoCandidato();
+//		savePapeleta();
+//		saveUsuarioPapeleta();
 
 		//deletePapeletas();
 		//deleteVotos();
@@ -323,30 +326,79 @@ public class SistemaDapApplication implements CommandLineRunner {
 
 	private void saveUsuarioPapeleta(){
 		Papeleta papeleta1 = papeletaRepository.getReferenceById(1);
-		Usuario usuario1 = usuarioRepository.findByDui("06242859-9");
+		Usuario usuario1 = usuarioRepository.findByDui("ER100420");
 		usuario1.setPapeleta(papeleta1);
 		usuarioRepository.save(usuario1);
 
 		Papeleta papeleta2 = papeletaRepository.getReferenceById(2);
-		Usuario usuario2 = usuarioRepository.findByDui("121212");
+		Usuario usuario2 = usuarioRepository.findByDui("RA102011");
 		usuario2.setPapeleta(papeleta2);
 		usuarioRepository.save(usuario2);
 
 		Papeleta papeleta3 = papeletaRepository.getReferenceById(3);
-		Usuario usuario3 = usuarioRepository.findByDui("222222");
+		Usuario usuario3 = usuarioRepository.findByDui("BC100520");
 		usuario3.setPapeleta(papeleta3);
 		usuarioRepository.save(usuario3);
 
 		Papeleta papeleta4 = papeletaRepository.getReferenceById(4);
-		Usuario usuario4 = usuarioRepository.findByDui("131313");
+		Usuario usuario4 = usuarioRepository.findByDui("MM102120");
 		usuario4.setPapeleta(papeleta4);
 		usuarioRepository.save(usuario4);
 
 		Papeleta papeleta5 = papeletaRepository.getReferenceById(5);
-		Usuario usuario5 = usuarioRepository.findByDui("141414");
+		Usuario usuario5 = usuarioRepository.findByDui("FG100220");
 		usuario5.setPapeleta(papeleta5);
 		usuarioRepository.save(usuario5);
 	}
+	
+	
+	private void saveUsuarios() {
+		List<Usuario> usuarios = new LinkedList<Usuario>();
+
+		Usuario usuario1 = new Usuario();
+		usuario1.setDUI("ER100420");
+		usuario1.setNombre("Pedro Antonio");
+		usuario1.setApellido("Elias Recinos");
+		usuario1.setContrasena("$2a$10$B5B4qCPBYhV.4m5Oqev8bOmGrMkfPxJoR3CK8vNMQbc68o9jUSUES");
+		usuarios.add(usuario1);
+
+		Usuario usuario2 = new Usuario();
+		usuario2.setDUI("RA102011");
+		usuario2.setNombre("Gerson Vladimir");
+		usuario2.setApellido("Ramos Argueta");
+		usuario2.setContrasena("$2a$10$B5B4qCPBYhV.4m5Oqev8bOmGrMkfPxJoR3CK8vNMQbc68o9jUSUES");
+
+		usuarios.add(usuario2);
+
+		Usuario usuario3 = new Usuario();
+		usuario3.setDUI("BC100520");
+		usuario3.setNombre("Ernesto Jose");
+		usuario3.setApellido("Barrientos Cedillos");
+		usuario3.setContrasena("$2a$10$B5B4qCPBYhV.4m5Oqev8bOmGrMkfPxJoR3CK8vNMQbc68o9jUSUES");
+
+		usuarios.add(usuario3);
+
+		Usuario usuario4 = new Usuario();
+		usuario4.setDUI("MM102120");
+		usuario4.setNombre("Andres Alexander");
+		usuario4.setApellido("Melendez Martinez");
+		usuario4.setContrasena("$2a$10$B5B4qCPBYhV.4m5Oqev8bOmGrMkfPxJoR3CK8vNMQbc68o9jUSUES");
+
+		usuarios.add(usuario4);
+
+		Usuario usuario5 = new Usuario();
+		usuario5.setDUI("FG100220");
+		usuario5.setNombre("Miguel Angel");
+		usuario5.setApellido("Flores Guzman");
+		usuario5.setContrasena("$2a$10$B5B4qCPBYhV.4m5Oqev8bOmGrMkfPxJoR3CK8vNMQbc68o9jUSUES");
+
+		usuarios.add(usuario5);
+
+		usuarioRepository.saveAll(usuarios);
+
+		System.out.println(usuarios.size() + " Usuarios se añadieron!");
+	}
+
 
 	private void deletePapeletas(){papeletaRepository.deleteAll();}
 	private void deleteVotos(){
