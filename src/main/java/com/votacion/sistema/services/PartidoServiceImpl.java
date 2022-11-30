@@ -5,6 +5,8 @@ import com.votacion.sistema.repositories.PartidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PartidoServiceImpl implements PartidoService{
 
@@ -13,5 +15,9 @@ public class PartidoServiceImpl implements PartidoService{
     @Override
     public Partido getPartidoById(Integer id) {
         return partidoRepository.findById(id).get();
+    }
+    @Override
+    public List<Partido> partidoList() {
+        return partidoRepository.findAll();
     }
 }
