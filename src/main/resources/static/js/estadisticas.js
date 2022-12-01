@@ -1,16 +1,22 @@
 // Colores por partido
-const coloresBanderas = {
-    'Alianza Republicana Nacionalista' : 'rgb(0, 90, 173)',
-    'Frente Farabundo Martí para la Liberación Nacional' : 'rgb(212, 32, 43)', // FMLN
-    'Gran Alianza por la Unidad Nacional' : '#64cdca', // GANA
-    'Partido de Concertación Nacional' : '#1134b5', // PCN
-    'Nuevas Ideas' : 'rgb(0, 173, 239)',
+const obtenerColor= partido => {
+    const defaultColor = '#d3d3d3'
+
+    const coloresBanderas = {
+        'Alianza Republicana Nacionalista' : 'rgb(0, 90, 173)',
+        'Frente Farabundo Martí para la Liberación Nacional' : 'rgb(212, 32, 43)', // FMLN
+        'Gran Alianza por la Unidad Nacional' : '#64cdca', // GANA
+        'Partido de Concertación Nacional' : '#1134b5', // PCN
+        'Nuevas Ideas' : 'rgb(0, 173, 239)',
+    }
+
+    return coloresBanderas[partido] ?? defaultColor
 }
 
 // Da formato de JSON a Array de objetos para la tabla
 const darFormato = (json) => {
     const resultado = Object.keys(json).map(k => {
-        return { partido: k, votos: json[k], color: coloresBanderas[k] }
+        return { partido: k, votos: json[k], color: obtenerColor(k) }
     })
     return resultado
 }
@@ -26,7 +32,7 @@ const obtenerDatos = () => {
 }
 
 const crearGrafico = async () => {
-    const datosOrdenados = await ordenarDatos(await darFormato(await obtenerDatos()))
+    const datosOrdenados = await ordenarDatos(darFormato(await obtenerDatos()))
 
     const myChart = await new Chart(
         document.getElementById('grafica'),

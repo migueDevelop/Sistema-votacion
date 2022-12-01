@@ -10,4 +10,6 @@ public interface VotoService {
     public Voto saveVoto(Partido partido);
     public Voto saveVotoNull();
     HashMap<String, Integer> getVotosByPartidoMapped();
+
+    Integer getVotosNulos();
 }
