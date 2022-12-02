@@ -63,4 +63,13 @@ public class VotoServiceImpl implements VotoService{
 
         return votosPorPartido;
     }
+
+    /*
+    Crea una lista de votos cuyo partido es null y devuelve su tamaño
+    * */
+    @Override
+    public Integer getVotosNulos() {
+        List<Voto> votosNulos = votoRepository.findByPartido(null);
+        return votosNulos.size();
+    }
 }

@@ -47,6 +47,9 @@ public class EstadisticasController {
             response.addProperty(set.getKey(), set.getValue());
         }
 
+        // Añade los votos nulos
+        response.addProperty("nulos", votoService.getVotosNulos());
+
         String jsonResponse = response.toString();
 
         return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
