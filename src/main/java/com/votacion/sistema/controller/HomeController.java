@@ -10,4 +10,9 @@ public class HomeController {
         model.addAttribute("titulo", "Elecciones presidenciales 2022");
         return "index";
     }
+    
+    @GetMapping("/participantes")
+    public String showParticipantes() { return "participantes"; }
+    
+    
 }

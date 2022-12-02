@@ -55,12 +55,12 @@ public class SistemaDapApplication implements CommandLineRunner {
 //		savePapeleta();
 //		saveUsuarioPapeleta();
 
-		//deletePapeletas();
-		//deleteVotos();
-		//deleteUsuarios();
+		// deletePapeletas();
+		// deleteVotos();
+		// deleteUsuarios();
 	}
 
-	private void saveDepa(){
+	private void saveDepa() {
 		Departamentos departamentos1 = new Departamentos();
 		departamentos1.setNombre("San Salvador");
 		departamentosRepository.save(departamentos1);
@@ -81,7 +81,8 @@ public class SistemaDapApplication implements CommandLineRunner {
 		departamentos5.setNombre("Chalatenango");
 		departamentosRepository.save(departamentos5);
 	}
-	private void saveMuni(){
+
+	private void saveMuni() {
 
 		Departamentos sanSalvador = departamentosRepository.getReferenceById(1);
 
@@ -111,7 +112,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 		municipiosRepository.save(municipios5);
 	}
 
-	private void saveCentros(){
+	private void saveCentros() {
 
 		Municipios sanMarcos = municipiosRepository.getReferenceById(5);
 
@@ -142,7 +143,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 
 	}
 
-	private void saveJrv(){
+	private void saveJrv() {
 
 		CentroVotacion parqueSanSalvador = centroVotacionRepository.getReferenceById(5);
 
@@ -173,7 +174,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 
 	}
 
-	private void savePadron(){
+	private void savePadron() {
 
 		Padron padron1 = new Padron();
 		padron1.setCorrelativoPadron(5346476);
@@ -198,27 +199,33 @@ public class SistemaDapApplication implements CommandLineRunner {
 
 	private void savePartido(){
 		Partido partido1 = new Partido();
+		partido1.setBandera("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Bandera_Nuevas_Ideas.svg/1200px-Bandera_Nuevas_Ideas.svg.png");
 		partido1.setNombre("Nuevas Ideas");
 		partidoRepository.save(partido1);
 
 		Partido partido2 = new Partido();
+		partido2.setBandera("https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Alianza_Republicana_Nacionalista.svg/1200px-Alianza_Republicana_Nacionalista.svg.png");
 		partido2.setNombre("Alianza Republicana Nacionalista");
 		partidoRepository.save(partido2);
 
 		Partido partido3 = new Partido();
+		partido3.setBandera("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Bandera_de_GANA.svg/1200px-Bandera_de_GANA.svg.png");
 		partido3.setNombre("Gran Alianza por la Unidad Nacional");
 		partidoRepository.save(partido3);
+		
 
 		Partido partido4 = new Partido();
+		partido4.setBandera("https://upload.wikimedia.org/wikipedia/commons/b/ba/Bandera_-_Frente_Farabundo_Mart%C3%AD_para_la_Liberaci%C3%B3n_Nacional.svg");
 		partido4.setNombre("Frente Farabundo Martí para la Liberación Nacional");
 		partidoRepository.save(partido4);
 
 		Partido partido5 = new Partido();
+		partido5.setBandera("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_PCN.svg/800px-Flag_PCN.svg.png");
 		partido5.setNombre("Partido de Concertación Nacional");
 		partidoRepository.save(partido5);
 	}
 
-	private void saveCandidato(){
+	private void saveCandidato() {
 		Partido nuevasIdeas = partidoRepository.getReferenceById(1);
 		Candidato candidato1 = new Candidato();
 		candidato1.setNombre("Xavi Zablah");
@@ -255,7 +262,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 		candidatoRepository.save(candidato5);
 	}
 
-	private void saveTipoCandidato(){
+	private void saveTipoCandidato() {
 		Candidato candidatoN = candidatoRepository.getReferenceById(1);
 		TipoCandidato tipoCandidato1 = new TipoCandidato();
 		tipoCandidato1.setNombreTipoCandidato("presidente");
@@ -287,7 +294,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 		tipoCandidatoRepository.save(tipoCandidato5);
 	}
 
-	private void savePapeleta(){
+	private void savePapeleta() {
 		JRV jrv1 = jrvRepository.getReferenceById(1);
 		Padron padron1 = padronRepository.getReferenceById(1);
 		Papeleta papeleta1 = new Papeleta();
@@ -324,7 +331,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 		papeletaRepository.save(papeleta5);
 	}
 
-	private void saveUsuarioPapeleta(){
+	private void saveUsuarioPapeleta() {
 		Papeleta papeleta1 = papeletaRepository.getReferenceById(1);
 		Usuario usuario1 = usuarioRepository.findByDui("ER100420");
 		usuario1.setPapeleta(papeleta1);
@@ -350,8 +357,7 @@ public class SistemaDapApplication implements CommandLineRunner {
 		usuario5.setPapeleta(papeleta5);
 		usuarioRepository.save(usuario5);
 	}
-	
-	
+
 	private void saveUsuarios() {
 		List<Usuario> usuarios = new LinkedList<Usuario>();
 
@@ -399,12 +405,15 @@ public class SistemaDapApplication implements CommandLineRunner {
 		System.out.println(usuarios.size() + " Usuarios se añadieron!");
 	}
 
+	private void deletePapeletas() {
+		papeletaRepository.deleteAll();
+	}
 
-	private void deletePapeletas(){papeletaRepository.deleteAll();}
-	private void deleteVotos(){
+	private void deleteVotos() {
 		votoRepository.deleteAll();
 	}
-	private void deleteUsuarios(){
+
+	private void deleteUsuarios() {
 		usuarioRepository.deleteAll();
 	}
 }
