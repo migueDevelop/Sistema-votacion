@@ -55,9 +55,9 @@ public class SistemaDapApplication implements CommandLineRunner {
 //		savePapeleta();
 //		saveUsuarioPapeleta();
 
-		// deletePapeletas();
-		// deleteVotos();
-		// deleteUsuarios();
+//		 deletePapeletas();
+//		 deleteVotos();
+//		 deleteUsuarios();
 	}
 
 	private void saveDepa() {

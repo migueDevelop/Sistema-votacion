@@ -13,6 +13,7 @@
 	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 	crossorigin="anonymous">
 <link th:href="@{/css/candidatos.css}" rel="stylesheet" />
+
 </head>
 <body>
 	<nav>
@@ -25,21 +26,21 @@
 
 		</form>
 	</nav>
-<br>
-<br>
-
-	<div class="contentit">
-		
-			<p>Ejerce tu</p>
+	<br>
 	<br>
 
-			<ul>
-				<li>  voto</li>
-				<li>  derecho</li>
-				<li>  sufragio</li>
-			</ul>
-		</div>
-	
+	<div class="contentit">
+
+		<p>Ejerce tu</p>
+		<br>
+
+		<ul>
+			<li>voto</li>
+			<li>derecho</li>
+			<li>sufragio</li>
+		</ul>
+	</div>
+
 	<br>
 
 	<br>
@@ -74,10 +75,16 @@
 						height="100"></td>
 
 					<td>
-
-						<div class="container-img">
+					<script>
+								function alerta(){
+								alert("Usted ha realizado su voto");
+								}
+								</script>
+							<div class="container-img">
+							
+						
 							<form th:action="@{/votacion/{id}(id=${candidato.id})}"
-								method="post">
+								method="post" onclick="alerta()">
 
 								<button type="submit" class="class btn btn-primary">
 									<img
@@ -86,8 +93,8 @@
 								</button>
 							</form>
 
-						</div>
-					</td>
+						</div></td>
+
 
 				</tr>
 
