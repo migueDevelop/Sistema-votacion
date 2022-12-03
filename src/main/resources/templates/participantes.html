@@ -1,15 +1,26 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
   	<title>Partidos participantes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap" rel="stylesheet">
-		
+	  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	  <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet">
+	  <link th:href="@{/css/templatemo-leadership-event.css}" rel="stylesheet">
+	  <link
+			  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+			  rel="stylesheet">
 		
 		<link rel="stylesheet" href="css/stylepar.css">
   </head>
   <body>
+
+  <div class="d-flex flex-column ms-auto pe-4 pt-2">
+	  <h5>
+		  <a th:href="@{/}">Volver</a>
+	  </h5>
+  </div>
 		
 		<div class="wrapper">
 
